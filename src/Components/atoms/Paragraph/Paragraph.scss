@@ -1,12 +1,97 @@
 @import "../../Styles/base.scss";
 @import "../../Styles/includes/media-queries";
+@import "../../Styles/includes/variables";
+@import "../../Styles/includes/colors";
 
-.Paragraph {
-  color: #00aeef;
-  @include gt(md) {
-    color: red;
-  }
-  .text-center {
+.BodyText {
+  font-family: Merriweather;
+  margin-top: 0;
+  margin-bottom: 0;
+  white-space: pre-line;
+
+  &.Centered {
     text-align: center;
+  }
+
+  &.L {
+    font-size: map-get($body-text-sizes-mobile, L);
+    font-weight: normal;
+    line-height: map-get($body-text-line-heights-mobile, L);
+    p {
+      margin-block-start: map-get($body-text-line-heights-mobile, L);
+      margin-block-end: map-get($body-text-line-heights-mobile, L);
+    }
+  }
+
+  &.M {
+    font-size: map-get($body-text-sizes-mobile, M);
+    font-weight: normal;
+    line-height: map-get($body-text-line-heights-mobile, M);
+    p {
+      margin-block-start: map-get($body-text-line-heights-mobile, M);
+      margin-block-end: map-get($body-text-line-heights-mobile, M);
+    }
+  }
+
+  &.S {
+    font-size: map-get($body-text-sizes-mobile, S);
+    font-weight: normal;
+    line-height: map-get($body-text-line-heights-mobile, S);
+    p {
+      margin-block-start: map-get($body-text-line-heights-mobile, S);
+      margin-block-end: map-get($body-text-line-heights-mobile, S);
+    }
+  }
+
+  &.XS {
+    font-size: map-get($body-text-sizes-mobile, XS);
+    font-weight: normal;
+    line-height: map-get($body-text-line-heights-mobile, XS);
+    p {
+      margin-block-start: map-get($body-text-line-heights-mobile, XS);
+      margin-block-end: map-get($body-text-line-heights-mobile, XS);
+    }
+  }
+
+  @include gt(lg) {
+    &.L {
+      font-size: map-get($body-text-sizes-desktop, L);
+      font-weight: normal;
+      line-height: map-get($body-text-line-heights-desktop, L);
+      p {
+        margin-block-start: map-get($body-text-line-heights-desktop, L);
+        margin-block-end: map-get($body-text-line-heights-desktop, L);
+      }
+    }
+
+    &.M {
+      font-size: map-get($body-text-sizes-desktop, M);
+      font-weight: normal;
+      line-height: map-get($body-text-line-heights-desktop, M);
+      p {
+        margin-block-start: map-get($body-text-line-heights-desktop, M);
+        margin-block-end: map-get($body-text-line-heights-desktop, M);
+      }
+    }
+
+    &.S {
+      font-size: map-get($body-text-sizes-desktop, S);
+      font-weight: normal;
+      line-height: map-get($body-text-line-heights-desktop, S);
+      p {
+        margin-block-start: map-get($body-text-line-heights-desktop, S);
+        margin-block-end: map-get($body-text-line-heights-desktop, S);
+      }
+    }
+
+    &.XS {
+      font-size: map-get($body-text-sizes-desktop, XS);
+      font-weight: normal;
+      line-height: map-get($body-text-line-heights-desktop, XS);
+      p {
+        margin-block-start: map-get($body-text-line-heights-desktop, XS);
+        margin-block-end: map-get($body-text-line-heights-desktop, XS);
+      }
+    }
   }
 }
