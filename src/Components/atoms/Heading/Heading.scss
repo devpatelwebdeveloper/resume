@@ -1,0 +1,76 @@
+@import "../../Styles/includes/colors";
+@import "../../Styles/includes/variables";
+@import "../../Styles/includes/media-queries";
+
+.Heading {
+  font-weight: bold;
+  text-align: left;
+  &.Centered {
+    text-align: center;
+    &.Underlined > div {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .XL {
+    font-size: map-get($heading-sizes-mobile, XL);
+    line-height: map-get($heading-line-heights-mobile, XL);
+  }
+  .L {
+    font-size: map-get($heading-sizes-mobile, L);
+    line-height: map-get($heading-line-heights-mobile, L);
+  }
+  .M {
+    font-size: map-get($heading-sizes-mobile, M);
+    line-height: map-get($heading-line-heights-mobile, M);
+  }
+  .S {
+    font-size: map-get($heading-sizes-mobile, S);
+    line-height: map-get($heading-line-heights-mobile, S);
+  }
+  .XS {
+    font-size: map-get($heading-sizes-mobile, XS);
+    line-height: map-get($heading-line-heights-mobile, XS);
+  }
+
+  @include gt(lg) {
+    .XL {
+      font-size: map-get($heading-sizes-desktop, XL);
+      line-height: map-get($heading-line-heights-desktop, XL);
+    }
+    .L {
+      font-size: map-get($heading-sizes-desktop, L);
+      line-height: map-get($heading-line-heights-desktop, L);
+    }
+    .M {
+      font-size: map-get($heading-sizes-desktop, M);
+      line-height: map-get($heading-line-heights-desktop, M);
+    }
+    .S {
+      font-size: map-get($heading-sizes-desktop, S);
+      line-height: map-get($heading-line-heights-desktop, S);
+    }
+    .XS {
+      font-size: map-get($heading-sizes-desktop, XS);
+      line-height: map-get($heading-line-heights-desktop, XS);
+    }
+  }
+
+  &.Underlined > div {
+    display: block;
+    width: $heading-underline-width;
+    height: $heading-underline-height;
+    margin-top: $heading-underline-gap;
+    margin-bottom: 0px;
+  }
+}
