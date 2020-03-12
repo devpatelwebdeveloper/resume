@@ -5,20 +5,24 @@ import "./Paragraph.scss"
 
 export default class Paragraph extends React.Component {
   static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]).isRequired,
-    centered: PropTypes.bool.isRequired,
+    size: PropTypes.oneOf(["L", "M", "S", "XS"]),
+    /** Color of the text, defaults to brand navy. */
+    whiteText: PropTypes.bool,
+    centered: PropTypes.bool,
   }
   static defaultProps = {
-    children: "",
+    size: "S",
+    whiteText: false,
     centered: false,
   }
   render() {
-    const { children, centered } = this.props
-    const centerText = centered ? "text-center" : ""
-    const composedClassName = composeClassName(["Paragraph", centerText])
+    const { size, children, className, whiteText, centered } = this.props
+    const composedClassName = composeClassName([
+      `BodyText ${size}`,
+      className,
+      whiteText ? "whiteText" : "",
+      centered ? "Centered" : "",
+    ])
 
     return <p className={composedClassName}>{children}</p>
   }
