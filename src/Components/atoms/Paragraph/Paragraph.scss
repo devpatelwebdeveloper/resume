@@ -1,0 +1,12 @@
+@import "../../Styles/base.scss";
+@import "../../Styles/includes/media-queries";
+
+.Paragraph {
+  color: #00aeef;
+  @include gt(md) {
+    color: red;
+  }
+  .text-center {
+    text-align: center;
+  }
+}

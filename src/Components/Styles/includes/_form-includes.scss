@@ -1,0 +1,94 @@
+@import "./variables";
+@import "./colors";
+@import "./media-queries";
+
+%ErrorMessage {
+    height: map-get($body-text-line-heights-mobile, S);
+    line-height: map-get($body-text-line-heights-mobile, S);
+    @include gt(lg) {
+        height: map-get($body-text-line-heights-desktop, S);
+        line-height: map-get($body-text-line-heights-desktop, S);
+    }
+    color: $brand-red-color;
+}
+
+%FormBasics {
+    border: none;
+    outline: none;
+    resize: none;
+    border: 1px solid $base-border-grey-color;
+    font-family: MercuryTextG1;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: $brand-navy-color;
+    caret-color: $brand-blue-color;
+    box-sizing: border-box;
+    font-size: map-get($body-text-sizes-mobile, S);
+
+    @include gt(lg){
+        font-size: map-get($body-text-sizes-desktop, S);
+    }
+
+}
+
+%FormStates {
+    &.approved {
+        border: 1px solid $brand-green-color;
+    }
+
+    &.error {
+        border: 1px solid $brand-red-color;
+
+        path {
+            fill: $brand-red-color;
+        }
+    }
+
+    &:hover:not(.error) {
+        border: 1px solid $brand-blue-color;
+        cursor: text;
+    }
+
+    &:focus {
+        border: 1px solid $brand-blue-color;
+    }
+
+    &:active {
+        border: 1px solid $brand-blue-color;
+    }
+
+    &:disabled {
+        background-color: $base-disabled-grey-color;
+        border: 1px solid $base-border-grey-color;
+        cursor: not-allowed;
+    }
+}
+
+%IconGroup{
+
+    position: relative;
+
+    .ErrorIcon {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        z-index: 2;
+        &.S {
+            max-height: map-get($icon-sizes, S);
+        }
+
+        &.M {
+            max-height: map-get($icon-sizes, M);
+        }
+
+        &.L {
+            max-height: map-get($icon-sizes, L);
+        }
+    }
+
+    &.error .ErrorIcon {
+        path {
+            fill: $brand-red-color;
+        }
+    }
+}

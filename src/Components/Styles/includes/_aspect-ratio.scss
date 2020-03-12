@@ -1,0 +1,116 @@
+@import "./variables";
+@import "./media-queries";
+
+$ratios: '1:1', '2:1', '3:1', '4:3', '3:4', '16:9';
+
+ // This wont for anything in the smallest container, or % based widths
+// we need to align on how it should work when the container is at 100% width.
+// Otherwise, it can be used since even if columns are % based, anything above smallest container
+// translates directly to a px value that is not going to change.
+@mixin set-aspect-height($width, $ratio: '1:1') {
+  @if $ratio == '1:1' {
+    height: $width;
+  }
+  @else if $ratio == '2:1' {
+    height: $width * (1/2);
+  }
+  @else if $ratio == '3:1' {
+    height: $width * (1/3);
+  }
+  @else if $ratio == '4:3' {
+    height: $width * (3/4);
+  }
+  @else if $ratio == '3:4' {
+    height: $width * (4/3);
+  }
+  @else if $ratio == '16:9' {
+    height: $width * (9/16);
+  }
+  @else {
+    @debug "Invalid ratio `#{$ratio}`"
+  }
+};
+
+@mixin set-all-aspect-ratios($ratio: "1:1") {
+  width: 100%;
+  @include set-aspect-height(375px, $ratio);
+
+  @include gt(sm) {
+    @include set-aspect-height(map-get($max-container-sizes, sm), $ratio)
+  }
+
+  @include gt(md) {
+    @include set-aspect-height(map-get($max-container-sizes, md), $ratio)
+  }
+
+  @include gt(lg) {
+    @include set-aspect-height(map-get($max-container-sizes, lg), $ratio)
+  }
+
+  @include gt(xl) {
+    @include set-aspect-height(map-get($max-container-sizes, xl), $ratio)
+  }
+}
+
+@mixin set-all-aspect-ratios-column($cols) {
+  .Image {
+    &.OneToOne {
+      @include set-aspect-height-column($cols, "1:1");
+    }
+    &.TwoToOne {
+      @include set-aspect-height-column($cols, "2:1");
+    }
+    &.ThreeToOne {
+      @include set-aspect-height-column($cols, "2:1");
+    }
+    &.FourToThree {
+      @include set-aspect-height-column($cols, "4:3");
+    }
+    &.SixteenToNine {
+      @include set-aspect-height-column($cols, "16:9");
+    }
+  }
+}
+
+// This mixin is to be used for the aspect-height-column
+@mixin _get-height($columns, $ratio-fraction: 1) {
+  @include gt(md) {
+    height: (( $columns * map-get($max-container-sizes, md)/12  ) - map-get($gutters, md)) * $ratio-fraction
+  };
+  @include gt(lg) {
+    height: (( $columns * map-get($max-container-sizes, lg)/12  ) - map-get($gutters, lg)) * $ratio-fraction
+  };
+  @include gt(xl) {
+    height: (( $columns * map-get($max-container-sizes, xl)/12  ) - map-get($gutters, xl)) * $ratio-fraction
+  };
+}
+
+@mixin set-aspect-height-column($columns, $ratio) {
+  @if $ratio == '1:1' {
+    height: (( $columns * 376/12  ) - map-get($gutters, sm));
+    @include _get-height($columns);
+  }
+  @else if $ratio == '2:1' {
+    height: (( $columns * 376/12  ) - map-get($gutters, sm)) * (1/2);
+    @include _get-height($columns, (1/2));
+  }
+  @else if $ratio == '3:1' {
+    height: (( $columns * 376/12  ) - map-get($gutters, sm)) * (1/3);
+    @include _get-height($columns, (1/3));
+  }
+  @else if $ratio == '4:3' {
+    height: (( $columns * 376/12  ) - map-get($gutters, sm)) * (3/4);
+    @include _get-height($columns, (3/4));
+  }
+  @else if $ratio == '3:4' {
+    height: (( $columns * 376/12  ) - map-get($gutters, sm)) * (4/3);
+    @include _get-height($columns, (4/3));
+  }
+  @else if $ratio == '16:9' {
+    height: (( $columns * 376/12  ) - map-get($gutters, sm)) * (9/16);
+    @include _get-height($columns, (9/16));
+  }
+  @else {
+    @debug "Invalid ratio `#{$ratio}`"
+  }
+};

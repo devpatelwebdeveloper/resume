@@ -1,0 +1,37 @@
+@import "./media-queries";
+@import "./variables";
+
+
+// This mixin sets the container height based on the size of the text and how many lines you want
+// Just pass in the variable name of the mobile and desktop line heights, the number of lines you want, and what the text size is and it does the rest!
+@mixin set-max-container-height-single($container-name, $number-of-lines, $text-size) {
+  max-height: map-get($container-name, $text-size) * $number-of-lines;
+}
+
+// This mixin sets the container height based on the size of the text and how many lines you want
+// Just pass in the variable name of the mobile and desktop line heights, the number of lines you want, and what the text size is and it does the rest!
+@mixin set-max-container-height($line-height-name-mobile, $line-height-name-desktop, $number-of-lines, $text-size) {
+
+  max-height: map-get($line-height-name-mobile, $text-size) * $number-of-lines;
+
+  @include gt(lg){
+    max-height: map-get($line-height-name-desktop, $text-size) * $number-of-lines;
+  }
+}
+
+// This mixin sets the container height based on the size of the text and how many lines you want
+// Just pass in the variable name of the mobile and desktop line heights, the number of lines you want, and what the text size is and it does the rest!
+@mixin set-container-height-single($container-name, $number-of-lines, $text-size) {
+  height: map-get($container-name, $text-size) * $number-of-lines;
+}
+
+// This mixin sets the container height based on the size of the text and how many lines you want
+// Just pass in the variable name of the mobile and desktop line heights, the number of lines you want, and what the text size is and it does the rest!
+@mixin set-container-height($line-height-name-mobile, $line-height-name-desktop, $number-of-lines, $text-size) {
+
+  height: map-get($line-height-name-mobile, $text-size) * $number-of-lines;
+
+  @include gt(lg){
+    height: map-get($line-height-name-desktop, $text-size) * $number-of-lines;
+  }
+}

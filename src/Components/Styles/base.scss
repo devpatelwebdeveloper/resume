@@ -1,0 +1,29 @@
+@import "./includes/base-layout";
+@import "./includes/base-page";
+@import "./includes/fontface";
+
+body {
+  // Default font is soleil.
+  font-family: soleil;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  & > .content {
+    flex: 1 0 100%;
+  }
+}
+
+@include create-column-classes();
+
+.TestPageTitle {
+  background: #000;
+  color: white;
+  width: 100vw;
+  text-align: center;
+}
